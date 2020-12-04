@@ -5,8 +5,10 @@ and you can't make sense of it once it adds up to hundreds of lines on the conso
 _arbol_ organises your stdout prints in a hierarchy that follows the structure of your code. Use a simple 
 context manager to define the hierarchy and the 'aprint' command instead of print, and voila.
 Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
+Finally, when the optional dependencies are installed, the printed tree and text are colored with an 
+exquisitely crafted combination of colors for to make it even more visually appealing.  
 
-Arbol means 'tree' in spanish.  
+If you are wondering, 'arbol' means 'tree' in spanish.  
 
 Why not use a more traditional Python logging? We have made the choice of sticking to a plain and simple 
 scheme that matches the usage of 'print' statements. Also we could have tried to intercept stdout and do 
@@ -14,7 +16,7 @@ some magic there, but we prefer to keep things simple and lean, and let you _cho
 
 ## Installation
 
-Simply use pip:
+Install with pip:
 
 ```sh
 pip install arbol
@@ -38,7 +40,7 @@ pip install colorama
 Note: both colorama and ansicolors are optional -- _arbol_ will work fine without it installed.
 
 ## Example
-Here is a simple self-explanatory example:
+Here is a simple and self-explanatory example:
 ```python
 
 from arbol.arbol import lprint, lsection, section, Arbol
