@@ -1,14 +1,16 @@
 # arbol -- Arborescent Printouts in Python
 
-Do you have a script, a command line tool, or some workflow in Python that has lots of 'prints out',
-and you can't make sense of it? Sounds familiar?  
-_arbol_ organises your stdout prints in a hierarchy that follows the structure of your code.
+Do you have a script, a command line tool, or some workflow in Python that has lots of 'print' statements,
+and you can't make sense of it once it adds up to hundreds of lines on the console? Sounds familiar?  
+_arbol_ organises your stdout prints in a hierarchy that follows the structure of your code. Use a simple 
+context manager to define the hierarchy and the 'aprint' command instead of print, and voila.
 Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
 
 Arbol means 'tree' in spanish.  
 
-Why not use a more traditional Python logging? We have made the choice of sticking to a oplain and simple 
-scheme that matches the usage of 'print' statements 
+Why not use a more traditional Python logging? We have made the choice of sticking to a plain and simple 
+scheme that matches the usage of 'print' statements. Also we could have tried to intercept stdout and do 
+sme magic there, but we prefer to keep things simple and lean and let yo _choose_ to use _arbol_ where it makes sense.  
 
 ## Installation
 
@@ -26,7 +28,6 @@ If you want colors, install the [ansicolors](https://pypi.org/project/ansicolors
 pip install ansicolors
 ```
 
-T make sure that yo get the colors on all platforms including Windows, install the [colorama](https://pypi.org/project/colorama/)
 To make sure that you get the colors on all operating systems (particularly Windows), install the [colorama](https://pypi.org/project/colorama/)
 package:
 
@@ -37,7 +38,7 @@ pip install colorama
 Note: both colorama and ansicolors are optional -- _arbol_ will work fine without it installed.
 
 ## Example
-Here is a simple example:
+Here is a simple self-explanatory example:
 ```python
 
 from arbol.arbol import lprint, lsection, section, Arbol
@@ -86,7 +87,7 @@ lprint('you will not see that')
 ![example](example.png)
 
 ## Roadmap
-Some ideas:
+Some ideas we might consider from serious to highly speculative:
 - More color styles to choose from
 - Intercept stdout from C code so that printouts from libraries called from python are formatted too.
 - Generate tree automatically by inspecting stack?
