@@ -17,7 +17,14 @@ If you want colors, install the [ansicolors](https://pypi.org/project/ansicolors
 pip install ansicolors
 ```
 
-Note; this is optional, arbol will work fine without it.
+T make sure that yo get the colors on all platforms inclding Windows, install the [colorama](https://pypi.org/project/colorama/)
+package:
+
+```sh
+pip install colorama
+```
+
+Note: both colorama and ansicolors are optional -- arbol will work fine without it installed.
 
 # Example
 Here is a simple example:
@@ -62,12 +69,13 @@ lprint('demo is finished...')
 Arbol.enable_output = False
 lprint('you will not see that')
 
-# If you are running code
-
-
-
 ```
 
 
 ![example](example.png)
+
+# Roadmap
+Some ideas:
+- More colorstyles to choose from
+- Intercept stdout from C code so that printouts from libraries called from python are formatted too.
 
