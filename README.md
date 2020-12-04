@@ -27,6 +27,7 @@ pip install ansicolors
 ```
 
 T make sure that yo get the colors on all platforms including Windows, install the [colorama](https://pypi.org/project/colorama/)
+To make sure that you get the colors on all operating systems (particularly Windows), install the [colorama](https://pypi.org/project/colorama/)
 package:
 
 ```sh
