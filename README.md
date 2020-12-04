@@ -87,7 +87,7 @@ lprint('you will not see that')
 
 And this is how it looks like in the end:
 
-![example](example.png =250x250 )
+![example](example.png)
 
 ## Roadmap
 Some ideas we might consider from serious to highly speculative:
