@@ -17,7 +17,7 @@ If you want colors, install the [ansicolors](https://pypi.org/project/ansicolors
 pip install ansicolors
 ```
 
-T make sure that yo get the colors on all platforms inclding Windows, install the [colorama](https://pypi.org/project/colorama/)
+To make sure that you get the colors on all operating systems (particularly Windows), install the [colorama](https://pypi.org/project/colorama/)
 package:
 
 ```sh
@@ -31,8 +31,6 @@ Here is a simple example:
 ```python
 
 from arbol.arbol import lprint, lsection, section, Arbol
-
-# for colors, install the ansicolors package: 'pip install ansicolors'
 
 # You can limit the tree depth:
 Arbol.max_depth = 4
