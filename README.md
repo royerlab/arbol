@@ -10,7 +10,7 @@ Arbol means 'tree' in spanish.
 
 Why not use a more traditional Python logging? We have made the choice of sticking to a plain and simple 
 scheme that matches the usage of 'print' statements. Also we could have tried to intercept stdout and do 
-sme magic there, but we prefer to keep things simple and lean and let yo _choose_ to use _arbol_ where it makes sense.  
+some magic there, but we prefer to keep things simple and lean, and let you _choose_ to use _arbol_ where it makes sense.  
 
 ## Installation
 
