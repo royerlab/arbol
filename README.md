@@ -1,4 +1,4 @@
-# arbol
+# arbol -- Arborescent Printouts in Python
 
 Do you have a script, a command line tool, or some workflow in Python that has lots of 'prints out',
 and you can't make sense of it? Sounds familiar?  
@@ -26,7 +26,7 @@ If you want colors, install the [ansicolors](https://pypi.org/project/ansicolors
 pip install ansicolors
 ```
 
-T make sure that yo get the colors on all platforms inclding Windows, install the [colorama](https://pypi.org/project/colorama/)
+T make sure that yo get the colors on all platforms including Windows, install the [colorama](https://pypi.org/project/colorama/)
 package:
 
 ```sh

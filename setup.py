@@ -6,10 +6,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="arbol", # Replace with your own username
-    version="0.0.1",
+    version="2020.11.1",
     author="Loic A Royer",
-    author_email="twitter: @loicaroyer",
-    description="A small example package",
+    author_email="",
+    description="arbol -- Arborescent Printouts in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/royerlab/arbol",
