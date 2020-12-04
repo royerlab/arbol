@@ -1,60 +1,57 @@
-from arbol.arbol import Arbol, lprint, lsection
+from arbol.arbol import Arbol, aprint, asection
 
 
-def test_log():
+def test_arbol():
 
-    # This is required for this test to pass!
-    Arbol.override_test_exclusion = True
+    aprint('Test')
 
-    lprint('Test')
+    with asection('a section'):
+        aprint('a line')
+        aprint('another line')
+        aprint('we are done')
 
-    with lsection('a section'):
-        lprint('a line')
-        lprint('another line')
-        lprint('we are done')
+        with asection('a subsection'):
+            aprint('another line')
+            aprint('we are done')
 
-        with lsection('a subsection'):
-            lprint('another line')
-            lprint('we are done')
-
-            with lsection('a subsection'):
-                lprint('another line')
-                lprint('we are done')
+            with asection('a subsection'):
+                aprint('another line')
+                aprint('we are done')
 
                 assert Arbol._depth == 3
 
-                with lsection('a subsection'):
-                    lprint('another line')
-                    lprint('we are done')
+                with asection('a subsection'):
+                    aprint('another line')
+                    aprint('we are done')
 
-                    with lsection('a subsection'):
-                        lprint('another line')
-                        lprint('we are done')
+                    with asection('a subsection'):
+                        aprint('another line')
+                        aprint('we are done')
 
                         assert Arbol._depth == 5
 
-                        with lsection('a subsection'):
-                            lprint('another line')
-                            lprint('we are done')
+                        with asection('a subsection'):
+                            aprint('another line')
+                            aprint('we are done')
 
-                            with lsection('a subsection'):
-                                lprint('another line')
-                                lprint('we are done')
+                            with asection('a subsection'):
+                                aprint('another line')
+                                aprint('we are done')
 
                                 assert Arbol._depth == 7
 
-                        with lsection('a subsection'):
-                            lprint('another line')
-                            lprint('we are done')
+                        with asection('a subsection'):
+                            aprint('another line')
+                            aprint('we are done')
 
-                    with lsection('a subsection'):
-                        lprint('another line')
-                        lprint('we are done')
+                    with asection('a subsection'):
+                        aprint('another line')
+                        aprint('we are done')
 
-                with lsection('a subsection'):
-                    lprint('another line')
-                    lprint('we are done')
+                with asection('a subsection'):
+                    aprint('another line')
+                    aprint('we are done')
 
-    lprint('test is finished...')
+    aprint('test is finished...')
 
     assert Arbol._depth == 0

@@ -12,7 +12,6 @@ except ImportError:
         return text
 
 
-
 class Arbol:
     """ Arborescent (Hierarchical) Logging.
         Python package to organise your stdout prints
@@ -26,10 +25,9 @@ class Arbol:
     colorful = True
     max_depth = math.inf
     elapsed_time = True
-    override_test_exclusion = False
 
     # Define colors:
-    c_text    = '#2A9D8F'
+    c_text = '#2A9D8F'
     c_scafold = '#E9C46A'
     c_timming = '#2A9DAF'
     c_section = '#F4A261'
@@ -76,7 +74,7 @@ def _colorise(text: str, fg: str):
         return text
 
 
-def lprint(*args, sep=' ', end='\n'):
+def aprint(*args, sep=' ', end='\n'):
     """
     Arbol version of print. Text will be printed following the arborescent structure of sections.
 
@@ -87,10 +85,6 @@ def lprint(*args, sep=' ', end='\n'):
     end : str
 
     """
-    if not Arbol.override_test_exclusion:
-        for arg in sys.argv:
-            if "test" in arg:
-                return
 
     if Arbol._depth <= Arbol.max_depth:
         level = min(Arbol.max_depth, Arbol._depth)
@@ -99,9 +93,9 @@ def lprint(*args, sep=' ', end='\n'):
 
 
 @contextmanager
-def lsection(section_header: str):
+def asection(section_header: str):
     """
-    Introduces a 'node' in the tree below which 'lprints' will be placed.
+    Introduces a 'node' in the tree below which 'aprints' will be placed.
     Ideally, you want to group code so that it forms a 'unit'.
 
     Parameters
@@ -109,11 +103,6 @@ def lsection(section_header: str):
     section_header : section header
 
     """
-    if not Arbol.override_test_exclusion:
-        for arg in sys.argv:
-            if "test" in arg:
-                yield
-                return
 
     if Arbol._depth + 1 <= Arbol.max_depth:
         Arbol.native_print(
@@ -153,7 +142,7 @@ def lsection(section_header: str):
 
 def section(section_header: str):
     """
-    Function decorator that initiates a section.
+    Function decorator that initiates a section for each function call.
     Don't abuse this too much or you might pollute your stack trace excessively...
 
     Parameters
@@ -164,7 +153,7 @@ def section(section_header: str):
 
     def _outer(func):
         def _wrap(*args, **kwargs):
-            with lsection(section_header):
+            with asection(section_header):
                 return func(*args, **kwargs)
 
         return _wrap
@@ -208,3 +197,12 @@ def _print_elapsed(elapsed):
                       + Arbol._la_, fg=Arbol.c_scafold)
             + _colorise(f' {elapsed / (60 * 60):.2f} hours', fg=Arbol.c_timming)
         )
+
+
+# Some legacy projects are using previous function names, this is deprecated!
+def lprint(*args, sep=' ', end='\n'):
+    return lprint(*args, sep=sep, end=end)
+
+def lsection(section_header: str):
+    with asection(section_header):
+        yield

@@ -1,12 +1,24 @@
-from setuptools import setup
+import setuptools
 
-setup(
-    name='arbol',
-    version='0.1',
-    packages=['arbol', 'arbol.demo', 'arbol.test'],
-    url='',
-    license='',
-    author='royer',
-    author_email='',
-    description='Python package to organise your stdout prints in a hierarchy that follows the structure of your code'
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="arbol", # Replace with your own username
+    version="0.0.1",
+    author="Loic A Royer",
+    author_email="twitter: @loicaroyer",
+    description="A small example package",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/royerlab/arbol",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
 )
+
