@@ -43,7 +43,7 @@ Note: both colorama and ansicolors are optional -- _arbol_ will work fine withou
 Here is a simple and self-explanatory example:
 ```python
 
-from arbol.arbol import lprint, lsection, section, Arbol
+from arbol.arbol import aprint, asection, section, Arbol
 
 # for colors, install the ansicolors package: 'pip install ansicolors',
 # and for windows install the colorama package: 'pip install colorama'
@@ -52,24 +52,24 @@ from arbol.arbol import lprint, lsection, section, Arbol
 Arbol.max_depth = 4
 
 # use lprint instead of the standard print
-lprint('Test')
+aprint('Test')
 
 # You can decorate functions:
 @section('function')
 def fun(x):
     if x >= 0:
-        with lsection('recursive call to f'):
-            lprint(f"f(x)+1={fun(x-1)}")
+        with asection('recursive call to f'):
+            aprint(f"f(x)+1={fun(x - 1)}")
 
 # The context manager let's you start a 'section' i.e. a node in the tree
-with lsection('a section'):
-    lprint('a line')
-    lprint('another line')
-    lprint('we are done')
+with asection('a section'):
+    aprint('a line')
+    aprint('another line')
+    aprint('we are done')
 
-    with lsection('a subsection'):
-        lprint('another line')
-        lprint('we are done')
+    with asection('a subsection'):
+        aprint('another line')
+        aprint('we are done')
 
     fun(2)
 
@@ -77,11 +77,11 @@ with lsection('a section'):
     Arbol.elapsed_time = False
     fun(100)
 
-lprint('demo is finished...')
+aprint('demo is finished...')
 
 # You can also turn off all output with one switch:
 Arbol.enable_output = False
-lprint('you will not see that')
+aprint('you will not see that')
 
 ```
 
