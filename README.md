@@ -51,7 +51,7 @@ from arbol.arbol import aprint, asection, section, Arbol
 # You can limit the tree depth:
 Arbol.max_depth = 4
 
-# use lprint instead of the standard print
+# use aprint (=arbol print) instead of the standard print
 aprint('Test')
 
 # You can decorate functions:
@@ -61,16 +61,17 @@ def fun(x):
         with asection('recursive call to f'):
             aprint(f"f(x)+1={fun(x - 1)}")
 
-# The context manager let's you start a 'section' i.e. a node in the tree
+# The context manager let's you go down one level in the tree
 with asection('a section'):
     aprint('a line')
     aprint('another line')
-    aprint('we are done')
+    aprint('we are done \n or are we? \n someone gotta check!')
 
     with asection('a subsection'):
         aprint('another line')
         aprint('we are done')
 
+    # works through function calls and the like...
     fun(2)
 
     # You can deactivate the elapsed time measurement and printing:
@@ -83,6 +84,9 @@ aprint('demo is finished...')
 Arbol.enable_output = False
 aprint('you will not see that')
 
+
+
+
 ```
 
 And this is how it looks like in the end:
@@ -92,9 +96,9 @@ And this is how it looks like in the end:
 ## Roadmap
 Some ideas we might consider from serious to highly speculative:
 - More color styles to choose from
-- Intercept stdout from C code so that printouts from libraries called from python are formatted too.
+- Intercept stdout from C code so that printouts from libraries called from python are formatted too, unclear is that's possible.
 - Generate tree automatically by inspecting stack?
-- Interoperability with logging package
+- Interoperability with logging package? 
 
 ## Authors
 
