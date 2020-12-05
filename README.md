@@ -6,7 +6,7 @@ _arbol_ organises your stdout prints in a hierarchy that follows the structure o
 context manager to define the hierarchy and the 'aprint' command instead of print, and voila.
 Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
 Finally, when the optional dependencies are installed, the printed tree and text are colored with an 
-exquisitely crafted combination of colors for to make it even more visually appealing.  
+exquisitely crafted combination of colors, making it even more visually appealing.  
 
 If you are wondering, 'arbol' means 'tree' in spanish.  
 
