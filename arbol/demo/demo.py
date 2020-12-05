@@ -6,7 +6,7 @@ from arbol.arbol import aprint, asection, section, Arbol
 # You can limit the tree depth:
 Arbol.max_depth = 4
 
-# use lprint instead of the standard print
+# use aprint (=arbol print) instead of the standard print
 aprint('Test')
 
 # You can decorate functions:
@@ -16,16 +16,17 @@ def fun(x):
         with asection('recursive call to f'):
             aprint(f"f(x)+1={fun(x - 1)}")
 
-# The context manager let's you start a 'section' i.e. a node in the tree
+# The context manager let's you go down one level in the tree
 with asection('a section'):
     aprint('a line')
     aprint('another line')
-    aprint('we are done')
+    aprint('we are done \n or are we? \n someone gotta check!')
 
     with asection('a subsection'):
         aprint('another line')
         aprint('we are done')
 
+    # works through function calls and the like...
     fun(2)
 
     # You can deactivate the elapsed time measurement and printing:

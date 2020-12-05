@@ -93,6 +93,10 @@ Some ideas we might consider from serious to highly speculative:
 - Generate tree automatically by inspecting stack?
 - Interoperability with logging package
 
+## Contributions
+
+Pull requests highly welcome! 
+
 ## Authors
 
 Loic A. Royer (@loicaroyer)

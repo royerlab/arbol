@@ -88,15 +88,19 @@ def aprint(*args, sep=' ', end='\n'):
 
     if Arbol._depth <= Arbol.max_depth:
         level = min(Arbol.max_depth, Arbol._depth)
-        Arbol.native_print(_colorise(Arbol._vl_ * int(level) + Arbol._br_, fg=Arbol.c_scafold) + ' ', end='')
-        Arbol.native_print(*args, sep=sep, end=end)
+        text = sep.join(tuple(str(arg) for arg in args))+end
+        lines = text.split('\n')
+        for i, line in enumerate(lines):
+            if line:
+                Arbol.native_print(_colorise(Arbol._vl_ * int(level) + (Arbol._br_ if i == 0 else Arbol._vl_), fg=Arbol.c_scafold) + ' ', end='')
+                Arbol.native_print(line, sep=sep, end='\n')
 
 
 @contextmanager
 def asection(section_header: str):
     """
-    Introduces a 'node' in the tree below which 'aprints' will be placed.
-    Ideally, you want to group code so that it forms a 'unit'.
+    Introduces a 'node' in the tree below which context-bound 'aprints' will be placed.
+    Ideally, you want to carefully choose blocks of code / workflow units so that it forms a 'unit'.
 
     Parameters
     ----------
