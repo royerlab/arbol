@@ -89,7 +89,7 @@ aprint('you will not see that')
 
 ```
 
-And this is how it looks like in the end:
+And this is how it looks like:
 
 ![example](example.png)
 
