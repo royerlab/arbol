@@ -1,4 +1,4 @@
-# arbol | a Python Package for Arborescent Printouts in Python
+# arbol | Python Package for Arborescent Printouts in Python
 ![s](arbol.png) 
 Do you have a script, a command line tool, or some workflow in Python that has lots of 'print' statements,
 and you can't make sense of it once it adds up to hundreds of lines on the console? Sounds familiar?  
