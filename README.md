@@ -14,9 +14,10 @@ scheme that matches the usage of 'print' statements.
 
 ## Features
 
-You can use the 'acapture' context manager to capture stdout (and stderr), or use the 'aprint' replacement for the built-in 'print'.
-You create a new 'node' in the tree with the 'asection' contact manager. Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
-You have several configuration flags in the Arbol class to tune things.
+You can use 'aprint' replacement for the built-in 'print'.
+You create a new 'node' in the tree with the 'asection' contact manager. Moreover, _arbol_ measures the elapsed time for each node of the tree and displays that conveniently.
+You have several configuration flags in the Arbol class to tune things. If yo want to capture print statements originating from 3rd party code,
+you can use the 'acapture' context manager to capture stdout (and stderr) -- tis is a bit experimental and is best used sparingly.
 The best documentation is simply the demo below...  
 
 ## Installation
