@@ -4,15 +4,20 @@ Do you have a script, a command line tool, or some workflow in Python that has l
 and you can't make sense of it once it adds up to hundreds of lines on the console? Sounds familiar?  
 _arbol_ organises your stdout prints in a hierarchy that follows the structure of your code. Use a simple 
 context manager to define the hierarchy and the 'aprint' command instead of print, and voila.
-Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
 Finally, when the optional dependencies are installed, the printed tree and text are colored with an 
 exquisitely crafted combination of colors, making it even more visually appealing.  
 
 If you are wondering, 'arbol' means 'tree' in spanish.  
 
 Why not use a more traditional Python logging? We have made the choice of sticking to a plain and simple 
-scheme that matches the usage of 'print' statements. Also we could have tried to intercept stdout and do 
-some magic there, but we prefer to keep things simple and lean, and let you _choose_ to use _arbol_ where it makes sense.  
+scheme that matches the usage of 'print' statements.
+
+## Features
+
+You can use the 'acapture' context manager to capture stdout (and stderr), or use the 'aprint' replacement for the built-in 'print'.
+You create a new 'node' in the tree with the 'asection' contact manager. Moreover, _arbol_ measures the elpased time for each node of the tree and displays that conveniently.
+You have several configuration flags in the Arbol class to tune things.
+The best documentation is simply the demo below...  
 
 ## Installation
 
@@ -43,7 +48,9 @@ Note: both colorama and ansicolors are optional -- _arbol_ will work fine withou
 Here is a simple and self-explanatory example:
 ```python
 
-from arbol.arbol import aprint, asection, section, Arbol
+from arbol import Arbol, aprint, section, asection, acapture
+
+import arbol
 
 # for colors, install the ansicolors package: 'pip install ansicolors',
 # and for windows install the colorama package: 'pip install colorama'
@@ -74,6 +81,11 @@ with asection('a section'):
     # works through function calls and the like...
     fun(2)
 
+    # You can capture stdout if you want, usefull when a 3rd party library has printouts that you want to capture...
+    with acapture():
+        print("No escape is possible")
+        aprint("Even this works...\n")
+
     # You can deactivate the elapsed time measurement and printing:
     Arbol.elapsed_time = False
     fun(100)
@@ -83,8 +95,6 @@ aprint('demo is finished...')
 # You can also turn off all output with one switch:
 Arbol.enable_output = False
 aprint('you will not see that')
-
-
 
 
 ```

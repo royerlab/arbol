@@ -1,4 +1,6 @@
-from arbol.arbol import aprint, asection, section, Arbol
+from arbol import Arbol, aprint, section, asection, acapture
+
+import arbol
 
 # for colors, install the ansicolors package: 'pip install ansicolors',
 # and for windows install the colorama package: 'pip install colorama'
@@ -28,6 +30,11 @@ with asection('a section'):
 
     # works through function calls and the like...
     fun(2)
+
+    # You can capture stdout if you want, usefull when a 3rd party library has printouts that you want to capture...
+    with acapture():
+        print("No escape is possible")
+        aprint("Even this works...\n")
 
     # You can deactivate the elapsed time measurement and printing:
     Arbol.elapsed_time = False
