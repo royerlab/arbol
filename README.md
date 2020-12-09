@@ -86,6 +86,7 @@ with asection('a section'):
     with acapture():
         print("No escape is possible")
         aprint("Even this works...\n")
+        # Don't push it.. sections will not work right now...
 
     # You can deactivate the elapsed time measurement and printing:
     Arbol.elapsed_time = False
@@ -110,6 +111,7 @@ Some ideas we might consider from serious to highly speculative:
 - Intercept stdout from C code so that printouts from libraries called from python are formatted too, unclear is that's possible.
 - Generate tree automatically by inspecting stack?
 - Interoperability with logging package? 
+- How to handle multiple threads/processes? Right now, the printouts get inter;leaved stochastically which is messy and incomprehensible. One idea is to capture all outputs from each thread, hold onto these outputs until the thread is done (perhaps via a dedicated 'holding' context manager), and ouput it all in order and separately. Probably doable. 
 
 ## Contributions
 
