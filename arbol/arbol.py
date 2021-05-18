@@ -13,6 +13,12 @@ except ImportError:
     def color(text: str, fg: str):
         return text
 
+try:
+    # For color support on windows:
+    from colorama import init
+    init(autoreset=True)
+except ImportError:
+    pass
 
 class Arbol:
     """ Arborescent (Hierarchical) Logging.
