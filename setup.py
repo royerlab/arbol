@@ -15,7 +15,7 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'arbol'
 DESCRIPTION = 'arbol -- Arborescent Printouts in Python'
-URL = 'https://github.com/royerlab/dexp'
+URL = 'https://github.com/royerlab/arbol'
 EMAIL = 'loic.royer@czbiohub.org'
 AUTHOR = 'Loic A Royer'
 REQUIRES_PYTHON = '>=3.6.0'
@@ -33,8 +33,6 @@ REQUIRED = []
 
 # What packages are optional?
 EXTRAS = {'color': ['colorama', 'ansicolors',]}
-
-
 
 
 
