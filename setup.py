@@ -121,8 +121,8 @@ setup(
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
-    license='BSD 3-Clause',
-    license_file='LICENSE.txt',
+    license='MIT',
+    license_file='LICENSE',
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
