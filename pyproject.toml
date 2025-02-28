@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "arbol"
+dynamic = ["version"]
+authors = [
+  { name="Loic A. Royer", email="loic.royer@czbiohub.org" },
+]
+description = "arbol -- Arborescent Printouts in Python"
+readme = "README.md"
+keywords = ["print", "terminal", "logging", "tree", "console"]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[tool.hatch.build.targets.sdist]
+ignore-vcs = true
+packages = ["arbol"]
+include = [
+  "**",
+  "README.md",
+  "LICENSE",
+]
+exclude = [
+    "**/tests/**",
+    "**/.DS_Store",
+    "*.egg-info"
+]
+
+[tool.hatch.version]
+path = "arbol/__init__.py"
+
+
+
+[project.urls]
+Homepage = "https://github.com/royerlab/arbol"
+Issues = "https://github.com/royerlab/arbol/issues"

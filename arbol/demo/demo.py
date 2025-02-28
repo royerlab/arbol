@@ -35,6 +35,7 @@ with asection('a section'):
     with acapture():
         print("No escape is possible")
         aprint("Even this works...\n")
+        # Don't push it... you can't create subsections right now, might be possible in the future.
 
     # You can deactivate the elapsed time measurement and printing:
     Arbol.elapsed_time = False

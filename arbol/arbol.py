@@ -5,7 +5,7 @@ import sys
 import time
 from contextlib import contextmanager
 from threading import local
-from typing import Any
+from typing import Any, Optional
 
 try:
     # for color support, install ansicolors
@@ -86,7 +86,7 @@ def _colorise(text: str, fg: str):
         return text
 
 
-def aprint(*args: Any, sep=' ', end='\n', file=None, separate_lines=False):
+def aprint(*args, sep=' ', end='\n', file=None, separate_lines=False):
     """
     Arbol version of print. Text will be printed following the arborescent structure of sections.
 

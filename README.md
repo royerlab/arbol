@@ -45,6 +45,13 @@ pip install colorama
 
 Note: both colorama and ansicolors are optional -- _arbol_ will work fine without it installed.
 
+To run the tests you will need Pytest:
+
+```sh
+pip install pytest
+```
+
+
 ## Example
 Here is a simple and self-explanatory example:
 ```python
@@ -111,7 +118,7 @@ Some ideas we might consider from serious to highly speculative:
 - Intercept stdout from C code so that printouts from libraries called from python are formatted too, unclear is that's possible.
 - Generate tree automatically by inspecting stack?
 - Interoperability with logging package? 
-- How to handle multiple threads/processes? Right now, the printouts get inter;leaved stochastically which is messy and incomprehensible. One idea is to capture all outputs from each thread, hold onto these outputs until the thread is done (perhaps via a dedicated 'holding' context manager), and ouput it all in order and separately. Probably doable. 
+- How to handle multiple threads/processes? Right now, the printouts get interleaved stochastically which is messy and incomprehensible. One idea is to capture all outputs from each thread, hold onto these outputs until the thread is done (perhaps via a dedicated 'holding' context manager), and ouput it all in order and separately. Probably doable. 
 
 ## Contributions
 
