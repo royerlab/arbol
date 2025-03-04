@@ -55,3 +55,13 @@ def test_arbol():
     aprint('test is finished...')
 
     assert Arbol._depth == 0
+
+def test_arbol_exception_handling():
+    try:
+        with asection('a section with exception'):
+            aprint('This will raise an exception')
+            raise ValueError('An error occurred')
+    except ValueError as e:
+        assert str(e) == 'An error occurred'
+    else:
+        assert False, "Exception was not raised"

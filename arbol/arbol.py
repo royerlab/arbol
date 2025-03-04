@@ -67,10 +67,11 @@ class Arbol:
         return
 
     @staticmethod
-    def native_print(*args, sep=' ', end='\n', file=None):
+    def native_print(self, *args, sep=' ', end='\n', file=None):
         if Arbol.enable_output:
+            self = _colorise(self, fg=Arbol.c_text)
             args = (_colorise(arg, fg=Arbol.c_text) for arg in args)
-            print(*args, sep=sep, end=end, file=file)
+            print(self, *args, sep=sep, end=end, file=file)
 
     def set_log_elapsed_time(log_elapsed_time: bool):
         Arbol.elapsed_time = log_elapsed_time
@@ -86,24 +87,29 @@ def _colorise(text: str, fg: str):
         return text
 
 
-def aprint(*args, sep=' ', end='\n', file=None, separate_lines=False):
+def aprint(self: Any, *args:Any, sep:str=' ', end:str='\n', file=None, separate_lines=False) -> None:
     """
     Arbol version of print. Text will be printed following the arborescent structure of sections.
 
     Parameters
     ----------
+    These are the same as the built-in print function except for separate_lines
+    self: Any
     args : list
     sep : str
     end : str
+    file : Any
+    separate_lines : bool
+        Display each line (\n separated) as a separate line in the tree.
 
     """
 
     if Arbol.passthrough or hasattr(Arbol._thread_local, 'captured') and Arbol._thread_local.captured:
-        print(*args, sep=sep, end=end, file=file)
+        print(self, *args, sep=sep, end=end, file=file)
 
     elif Arbol._depth <= Arbol.max_depth:
         level = min(Arbol.max_depth, Arbol._depth)
-        text = sep.join(tuple(str(arg) for arg in args))+end
+        text = str(self)+sep.join(tuple(str(arg) for arg in args))+end
         lines = text.split('\n')
         for i, line in enumerate(lines):
             if line:
@@ -157,8 +163,8 @@ def asection(section_header: str, file=None):
 
         Arbol.native_print(_colorise(Arbol._vl_ * (Arbol._depth + 1), fg=Arbol.c_scafold), file=file)
 
-        if exception is not None:
-            raise exception
+    if exception is not None:
+        raise exception
 
 
 def section(section_header: str, file=None):
