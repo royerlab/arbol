@@ -1,4 +1,4 @@
-__version__ = '2025.3.3'
+__version__ = '2026.2.1'
 
 from arbol.arbol import Arbol as Arbol
 from arbol.arbol import acapture as acapture
