@@ -11,9 +11,14 @@ authors = [
 description = "arbol -- Arborescent Printouts in Python"
 readme = "README.md"
 keywords = ["print", "terminal", "logging", "tree", "console"]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
 ]
 license = "MIT"
@@ -88,7 +93,7 @@ exclude = [
 
 [tool.ruff]
 line-length = 120
-target-version = "py38"
+target-version = "py39"
 
 [tool.ruff.lint]
 select = [
