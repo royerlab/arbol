@@ -38,6 +38,69 @@ path = "arbol/__init__.py"
 
 
 
+[project.optional-dependencies]
+colors = [
+    "ansicolors",
+    "colorama",
+]
+dev = [
+    "pytest",
+    "ruff",
+    "ansicolors",
+    "colorama",
+]
+
 [project.urls]
 Homepage = "https://github.com/royerlab/arbol"
 Issues = "https://github.com/royerlab/arbol/issues"
+
+# =============================================================================
+# Hatch environments
+# =============================================================================
+
+[tool.hatch.envs.default]
+features = ["dev"]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest arbol/tests/ {args}"
+demo = "python -m arbol.demo.demo"
+lint = "ruff check arbol/"
+format = "ruff format arbol/"
+format-check = "ruff format --check arbol/"
+check = ["ruff check arbol/", "ruff format --check arbol/"]
+
+[tool.hatch.envs.colors]
+features = ["colors"]
+
+# =============================================================================
+# Hatch build settings
+# =============================================================================
+
+[tool.hatch.build.targets.wheel]
+packages = ["arbol"]
+exclude = [
+    "**/tests/**",
+]
+
+# =============================================================================
+# Ruff (linting & formatting)
+# =============================================================================
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "UP",     # pyupgrade
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+]
+
+[tool.ruff.format]
+quote-style = "single"

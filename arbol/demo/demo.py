@@ -1,9 +1,7 @@
-from arbol import Arbol, aprint, section, asection, acapture
+from arbol import Arbol, acapture, aprint, asection, section
 
-import arbol
-
-# for colors, install the ansicolors package: 'pip install ansicolors',
-# and for windows install the colorama package: 'pip install colorama'
+# For colors: pip install arbol[colors]
+# Or manually: pip install ansicolors colorama
 
 # You can limit the tree depth:
 Arbol.max_depth = 4
@@ -11,14 +9,16 @@ Arbol.max_depth = 4
 # use aprint (=arbol print) instead of the standard print
 aprint('Test')
 
+
 # You can decorate functions:
 @section('function')
 def fun(x):
     if x >= 0:
         with asection('recursive call to f'):
-            aprint(f"f(x)+1={fun(x - 1)}")
+            aprint(f'f(x)+1={fun(x - 1)}')
 
-# The context manager let's you go down one level in the tree
+
+# The context manager lets you go down one level in the tree
 with asection('a section'):
     aprint('a line')
     aprint('another line')
@@ -31,10 +31,10 @@ with asection('a section'):
     # works through function calls and the like...
     fun(2)
 
-    # You can capture stdout if you want, usefull when a 3rd party library has printouts that you want to capture...
+    # Capture stdout from third-party code (experimental):
     with acapture():
-        print("No escape is possible")
-        aprint("Even this works...\n")
+        print('No escape is possible')
+        aprint('Even this works...\n')
         # Don't push it... you can't create subsections right now, might be possible in the future.
 
     # You can deactivate the elapsed time measurement and printing:
@@ -46,5 +46,3 @@ aprint('demo is finished...')
 # You can also turn off all output with one switch:
 Arbol.enable_output = False
 aprint('you will not see that')
-
-
