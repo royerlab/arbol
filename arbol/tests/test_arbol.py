@@ -107,15 +107,15 @@ class TestAprint:
         """Test aprint with empty string."""
         aprint('')
         captured = capsys.readouterr()
-        # Empty string still produces tree scaffold
+        # Empty string produces no output (empty lines are filtered out)
         assert captured.out == ''
 
     def test_no_arguments(self, capsys):
         """Test aprint with no arguments (like print())."""
         aprint()
         captured = capsys.readouterr()
-        # No args should work like print() - just outputs end character
-        assert captured.out == ''  # Empty because no content to show
+        # No args produces no output (empty lines are filtered out)
+        assert captured.out == ''
 
     def test_flush_parameter(self, capsys):
         """Test aprint with flush parameter (same as built-in print)."""

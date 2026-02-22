@@ -69,7 +69,7 @@ TODAY := $(shell date +%Y.%-m.%-d)
 # Bump version to today's date and publish
 publish: check test
 	@echo "Current version: $(CURRENT_VERSION)"
-	@if echo "$(CURRENT_VERSION)" | grep -q "^$(TODAY)"; then \
+	@if echo "$(CURRENT_VERSION)" | grep -q "^$(TODAY)$$"; then \
 		echo "Error: Version $(CURRENT_VERSION) is already today's date."; \
 		echo "Use 'make publish-patch' for same-day releases."; \
 		exit 1; \

@@ -31,7 +31,7 @@ hatch shell        # Enter environment shell
 
 ## Architecture
 
-The entire library is in `arbol/arbol.py` (~285 lines). Key components:
+The entire library is in `arbol/arbol.py` (~390 lines). Key components:
 
 - **`Arbol` class**: Configuration holder using class variables. Manages global state including `_depth` (current nesting level), output flags, colors, and Unicode box-drawing characters. Uses thread-local storage for capture state.
 
