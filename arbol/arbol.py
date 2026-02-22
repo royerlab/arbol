@@ -1,3 +1,4 @@
+import functools
 import locale
 import math
 import sys
@@ -97,12 +98,12 @@ class Arbol:
     _thread_local = local()
 
     @staticmethod
-    def native_print(text, *args, sep=' ', end='\n', file=None):
+    def native_print(text, *args, sep=' ', end='\n', file=None, flush=False):
         """Internal print function that respects enable_output setting."""
         if Arbol.enable_output:
             text = _colorise(text, fg=Arbol.c_text)
             args = (_colorise(arg, fg=Arbol.c_text) for arg in args)
-            print(text, *args, sep=sep, end=end, file=file)
+            print(text, *args, sep=sep, end=end, file=file, flush=flush)
 
     @staticmethod
     def set_log_elapsed_time(log_elapsed_time: bool):
@@ -122,8 +123,10 @@ class Arbol:
         Parameters
         ----------
         max_depth : int
-            Maximum depth (1-indexed). Sections deeper than this show
-            a truncation message. Value is clamped to minimum of 1.
+            Maximum number of visible section levels (1-indexed).
+            For example, set_log_max_depth(2) shows 2 levels of sections.
+            Values below 1 are clamped so that at least root-level
+            aprint() output is visible.
 
         Note
         ----
@@ -169,7 +172,7 @@ def aprint(
 
     elif Arbol._depth <= Arbol.max_depth:
         level = min(Arbol.max_depth, Arbol._depth)
-        text = sep.join(str(arg) for arg in args) + end
+        text = sep.join(str(arg) for arg in args)
         lines = text.split('\n')
         for i, line in enumerate(lines):
             if line:
@@ -182,7 +185,7 @@ def aprint(
                     end='',
                     file=file,
                 )
-                Arbol.native_print(line, sep=sep, end=end, file=file)
+                Arbol.native_print(line, sep=sep, end=end, file=file, flush=flush)
 
 
 @contextmanager
@@ -230,7 +233,7 @@ def asection(section_header: str, file=None):
     exception = None
     try:
         yield
-    except Exception as e:
+    except BaseException as e:
         exception = e
 
     stop = time.time()
@@ -271,6 +274,7 @@ def section(section_header: str, file=None):
     """
 
     def _outer(func):
+        @functools.wraps(func)
         def _wrap(*args, **kwargs):
             with asection(section_header, file=file):
                 return func(*args, **kwargs)
@@ -333,7 +337,7 @@ def acapture():
 
 
 def _print_elapsed(elapsed, file=None):
-    """Print elapsed time in human-readable format (microseconds to hours)."""
+    """Print elapsed time in human-readable format (microseconds to days)."""
     if elapsed < 0.001:
         Arbol.native_print(
             _colorise(Arbol._vl_ * (Arbol._depth + 1) + Arbol._tb_ + Arbol._la_, fg=Arbol.c_scaffold)
@@ -362,6 +366,12 @@ def _print_elapsed(elapsed, file=None):
         Arbol.native_print(
             _colorise(Arbol._vl_ * (Arbol._depth + 1) + Arbol._tb_ + Arbol._la_, fg=Arbol.c_scaffold)
             + _colorise(f' {elapsed / (60 * 60):.2f} hours', fg=Arbol.c_timing),
+            file=file,
+        )
+    else:
+        Arbol.native_print(
+            _colorise(Arbol._vl_ * (Arbol._depth + 1) + Arbol._tb_ + Arbol._la_, fg=Arbol.c_scaffold)
+            + _colorise(f' {elapsed / (24 * 60 * 60):.2f} days', fg=Arbol.c_timing),
             file=file,
         )
 
