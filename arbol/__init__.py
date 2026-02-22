@@ -1,4 +1,4 @@
-__version__ = '2026.2.1'
+__version__ = '2026.2.22'
 
 __all__ = ['Arbol', 'aprint', 'asection', 'section', 'acapture']
 
